@@ -28,7 +28,7 @@ spec:
             secretKeyRef:
               name: backend-secrets
               key: JWT_SECRET
-        - name: GOOGLE_APPLICATION_CREDENTIALS
+        - name: GOOGLE_APPLICATION_CREDENTIALS  # ✅ Set the env variable to point to the mounted file
           value: "/app/config/neon-essence-453512-c8-f61dd8b43f1a.json"
         volumeMounts:
         - name: gcp-credentials
@@ -38,6 +38,9 @@ spec:
       - name: gcp-credentials
         secret:
           secretName: backend-secrets
+          items:
+          - key: GOOGLE_APPLICATION_CREDENTIALS
+            path: neon-essence-453512-c8-f61dd8b43f1a.json  # ✅ This ensures the JSON file is mounted correctly
 ---
 apiVersion: v1
 kind: Service
@@ -50,5 +53,3 @@ spec:
     targetPort: 5000
   selector:
     app: backend
-
-

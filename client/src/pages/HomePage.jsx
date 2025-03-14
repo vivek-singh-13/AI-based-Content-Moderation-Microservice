@@ -7,7 +7,7 @@ const VITE_URL = import.meta.env.VITE_BACKEND_URL;
 
 
 function HomePage({ token, setToken }) {
-  console.log(import.meta.env)
+  //console.log(import.meta.env)
   const [posts, setPosts] = useState([]);
   const [notifications, setNotifications] = useState([]);
   const navigate = useNavigate();

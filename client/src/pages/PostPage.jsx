@@ -49,8 +49,12 @@ function PostPage({ token }) {
         alert("Your comment was flagged for moderation.");
       }
     } catch (error) {
+      
       console.error("Error submitting comment:", error);
     }
+
+    console.log(id);
+    //console.log(postId);
   };
 
   return (
